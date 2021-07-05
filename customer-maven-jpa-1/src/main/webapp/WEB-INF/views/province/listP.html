@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+    <meta charset="UTF-8">
+    <title>Provinces</title>
+</head>
+<body>
+
+<div id="spacer1">
+    <a th:href="@{/create-province}">Create new province</a>
+</div>
+<div class="notify">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+<table border="1" id="provinces" style="width: 50%;">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="p: ${provinces}">
+            <td th:text="${p.name}"></td>
+            <td><a th:href="@{/edit-province/{id}(id=${p.id})}">Edit</a></td>
+            <td><a th:href="@{/delete-province/{id}(id=${p.id})}">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+<head th:replace="/layout :: footer"></head>
+</body>
+</html>
+</html>
